@@ -5,7 +5,13 @@ import VideoItem from "./VideoItem";
 const VideoList = ({ videos, onVideoSelect }) => {
   // for each video in videos, VideoItem component will be returned
   const renderedList = videos.map((video) => {
-    return <VideoItem video={video} onVideoSelect={onVideoSelect} />;
+    return (
+      <VideoItem
+        key={video.id.videoId}
+        video={video}
+        onVideoSelect={onVideoSelect}
+      />
+    );
   });
   return <div className="ui relaxed divided list">{renderedList}</div>;
 };
