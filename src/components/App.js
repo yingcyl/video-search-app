@@ -7,12 +7,21 @@ import youtube from "../apis/youtube";
 class App extends React.Component {
   state = { videos: [], selectedVideo: null };
 
+  // what will be rendered on the page first as a default
+  componentDidMount() {
+    this.onTermSubmit("cats");
+  }
+
   onTermSubmit = async (term) => {
     const response = await youtube.get("/search", {
       params: { q: term },
     });
     console.log(response.data.items);
-    this.setState({ videos: response.data.items });
+    this.setState({
+      videos: response.data.items,
+      // first video on the search results list will appear on the video player
+      selectedVideo: response.data.items[0],
+    });
   };
 
   onVideoSelect = (video) => {
