@@ -1,5 +1,4 @@
 import React from "react";
-import App from "./App";
 
 const VideoDetail = ({ video }) => {
   // if video state is null in App, this componenent will just display loading message. when video item is clicked, the state will change
